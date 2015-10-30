@@ -52,4 +52,32 @@ describe('auto-inject main usage', function () {
       expect(temp.run(test)).to.equal(1)
 
   })
+
+  it('example in readme',function(){
+
+    var bag={};
+    bag.a=function a(){
+      return "hello "
+    };
+    bag.b=function b(){
+      return "world"
+    };
+    bag.c=function c(a,b){
+      return {
+        someApi:function(){
+          return a+b
+        }
+      }
+    };
+    var result={};
+
+    var someTemp = main(bag, result).load("c")
+
+    function test(c){
+      console.log(c.someApi());
+    }
+    someTemp.run(test)
+
+  })
+
 });
