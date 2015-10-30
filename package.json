@@ -1,0 +1,22 @@
+{
+  "name": "auto-inject",
+  "version": "1.0.0",
+  "description": "auto inject dependency into function.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://volitiontl@github.com/volitiontl/auto-inject.git"
+  },
+  "author": "",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/volitiontl/auto-inject/issues"
+  },
+  "homepage": "https://github.com/volitiontl/auto-inject#readme"
+}
