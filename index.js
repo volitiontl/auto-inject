@@ -1,4 +1,5 @@
 var extract = require('./src/parse');
+var add=require('./src/add');
 
 /**
  * Run the function with arguments pullled from the dependency object.
@@ -78,10 +79,14 @@ module.exports = function (_obj, _depObj) {
   var obj = _obj;
   var depObj = _depObj;
   var tempObj = {
+    loadDir:function (fsPath){
+      add(obj,fsPath)
+      return tempObj
+    },
     load: function (name) {
       var queue = [];
-      loadDependencies(obj, name, depObj, queue)
-      return tempObj
+      loadDependencies(obj, name, depObj, queue);
+      return depObj[name]
     },
     run: function (func) {
       return runFunc(func, depObj)

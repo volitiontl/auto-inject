@@ -25,8 +25,8 @@ describe('auto-inject main usage', function () {
       return {a: 1}
     };
 
-    var temp = main(m, dependencies)
-      .load("a");
+    var temp = main(m, dependencies);
+    temp.load("a");
 
     console.log(temp.run(function (a) {
       return a.test
@@ -47,8 +47,8 @@ describe('auto-inject main usage', function () {
       return a.a
     }
 
-    var temp=main(m, {})
-      .load("a");
+    var temp=main(m, {});
+      temp.load("a");
       expect(temp.run(test)).to.equal(1)
 
   })
@@ -71,13 +71,24 @@ describe('auto-inject main usage', function () {
     };
     var result={};
 
-    var someTemp = main(bag, result).load("c")
+    var someTemp = main(bag, result);
+    someTemp.load("c");
 
     function test(c){
       console.log(c.someApi());
     }
     someTemp.run(test)
 
+  });
+
+
+  it('auto load from directory',function(){
+    var bag={};
+    var temp=main(bag,{});
+    var path=require('path');
+    temp.loadDir(path.resolve("test/deps"));
+    var result=temp.load("depc");
+    expect(result).to.equal("hello world")
   })
 
 });
